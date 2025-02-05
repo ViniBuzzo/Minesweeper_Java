@@ -7,7 +7,7 @@ import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class MinesweeperDificil {
+public class MinesweeperImpossivel {
     private static class MineTile extends JButton {
         int r;
         int c;
@@ -18,13 +18,12 @@ public class MinesweeperDificil {
         }
     }
 
-    int tileSize = 38; // Reduzido para caber na tela
-    int numRows = 16;
-    int numCols = numRows;
+    int tileSize = 30;
+    int numRows = 19;
+    int numCols = 26;
     int boardWidth = numCols * tileSize;
-    int boardHeight = numRows * tileSize + 50; // Ajuste para incluir o botão
-
-    int mineCount = 40;
+    int boardHeight = numRows * tileSize + 50;
+    int mineCount = 99;
 
 
     JFrame frame = new JFrame("Minesweeper");
@@ -35,7 +34,6 @@ public class MinesweeperDificil {
     JButton selectDificulty = new JButton("DIficuldade");
     static JFrame currentFrame = null;
 
-
     MineTile[][] board;
     ArrayList<MineTile> mineList;
     Random random = new Random();
@@ -43,10 +41,10 @@ public class MinesweeperDificil {
     int tilesClicked = 0;
     boolean gameOver = false;
 
-    MinesweeperDificil() {
-
-        if (currentFrame != null){
-            currentFrame.dispose();}
+    MinesweeperImpossivel() {
+        if (currentFrame != null) {
+            currentFrame.dispose();
+        }
         setupFrame();
         setupBoard();
         setMines();
@@ -79,6 +77,7 @@ public class MinesweeperDificil {
         frame.add(textPanel, BorderLayout.NORTH);
         currentFrame = frame;
     }
+
     private void showDifficultDialog() {
         int confirm = JOptionPane.showConfirmDialog(
                 frame,
@@ -106,7 +105,7 @@ public class MinesweeperDificil {
 
                 tile.setFocusable(false);
                 tile.setMargin(new Insets(0, 0, 0, 0));
-                tile.setFont(new Font("Arial Unicode MS", Font.PLAIN, 25));
+                tile.setFont(new Font("Arial Unicode MS", Font.PLAIN, 20));
 
                 tile.addMouseListener(new MouseAdapter() {
                     @Override

@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class MinesweeperMedio {
-    private class MineTile extends JButton {
+    private static class MineTile extends JButton {
         int r;
         int c;
 
@@ -23,6 +23,8 @@ public class MinesweeperMedio {
     int numCols = numRows;
     int boardWidth = numCols * tileSize;
     int boardHeight = numRows * tileSize + 50; // Ajuste para incluir o botão
+    static JFrame currentFrame = null;
+
 
     int mineCount = 20;
 
@@ -42,6 +44,9 @@ public class MinesweeperMedio {
     boolean gameOver = false;
 
     MinesweeperMedio() {
+        if (currentFrame != null) {
+            currentFrame.dispose();
+        }
         setupFrame();
         setupBoard();
         setMines();
@@ -72,6 +77,7 @@ public class MinesweeperMedio {
         textPanel.add(restartButton, BorderLayout.EAST);
         textPanel.add(selectDificulty, BorderLayout.WEST);
         frame.add(textPanel, BorderLayout.NORTH);
+        currentFrame = frame;
     }
 
     private void showDifficultDialog() {
@@ -207,9 +213,5 @@ public class MinesweeperMedio {
         textLabel.setText("Minesweeper");
         setupBoard();
         setMines();
-    }
-
-    public static void main(String[] args) {
-        new MinesweeperDificil();
     }
 }

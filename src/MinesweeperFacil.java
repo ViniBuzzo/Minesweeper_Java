@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class MinesweeperFacil {
-    private class MineTile extends JButton {
+    private static class MineTile extends JButton {
         int r;
         int c;
 
@@ -18,6 +18,8 @@ public class MinesweeperFacil {
         }
     }
 
+
+    static JFrame currentFrame = null;
     int tileSize = 70;
     int numRows = 8;
     int numCols = numRows;
@@ -40,6 +42,9 @@ public class MinesweeperFacil {
     boolean gameOver = false;
 
     MinesweeperFacil() {
+        if (currentFrame != null) {
+            currentFrame.dispose();
+        }
         setupFrame();
         setupBoard();
         setMines();
@@ -70,6 +75,7 @@ public class MinesweeperFacil {
         textPanel.add(restartButton, BorderLayout.EAST);
         textPanel.add(selectDificulty, BorderLayout.WEST);
         frame.add(textPanel, BorderLayout.NORTH);
+        currentFrame = frame;
     }
 
     private void showDifficultDialog() {
@@ -117,7 +123,7 @@ public class MinesweeperFacil {
                                 }
                             }
                         } else if (e.getButton() == MouseEvent.BUTTON3) {
-                            if (tile.getText().equals("") && tile.isEnabled()) {
+                            if (tile.getText().isEmpty() && tile.isEnabled()) {
                                 tile.setText("🚩");
                             } else if (tile.getText().equals("🚩")) {
                                 tile.setText("");
@@ -205,9 +211,5 @@ public class MinesweeperFacil {
         textLabel.setText("Minesweeper");
         setupBoard();
         setMines();
-    }
-
-    public static void main(String[] args) {
-        new MinesweeperDificil();
     }
 }
