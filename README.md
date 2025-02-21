@@ -4,7 +4,7 @@ Este é um jogo de **Minesweeper** (Campo Minado) desenvolvido em **Java** utili
 
 ## 🎮 Funcionalidades
 
-- Seleção de dificuldade (**Fácil, Médio, Difícil**)
+- Seleção de dificuldade (**Fácil, Médio, Difícil, Impossível**)
 - Interface responsiva com **Swing**
 - Geração aleatória de minas no tabuleiro
 - Marcadores de bandeira para minas
